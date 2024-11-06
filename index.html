@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tienda</title>
+    <link rel="stylesheet" href="style.css" />
+    
+</head>
+<body>
+    <header>
+        <h1>Tienda</h1>
+
+        <div class="container-icon">
+            <div class="container-cart-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-cart">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+                </svg>
+                <div class="count-products">
+                    <span id="contador-productos">0</span>
+                </div>
+            </div>
+
+            <div class="container-cart-products hidden-cart">
+                <div class="row-product hidden">
+                    
+                </div>
+
+                <div class="cart-total hidden">
+                    <h3>Total:</h3>
+                    <span class="total-pagar">$0</span>
+                    <button id="btn-finalizar-compra">Finalizar Compra</button>
+                </div>
+                <p class="cart-empty">El carrito está vacío</p>
+            </div>
+        </div>
+    </header>
+    <div class="container-items">
+        <div class="item">
+            <figure>
+                <img src="C:\Users\magui\OneDrive\Escritorio\pia profe\nuev\IMG\images.jpeg" alt="producto" />
+            </figure>
+            <div class="info-product">
+                <h2>Seguridad de TI</h2>
+                <p class="description">Otorgamos un entorno seguro óptimo para los usuarios de tecnología, administradores y la organización, con soluciones de primera.</p>
+                <p class="price">$80</p>
+                <button class="btn-add-cart">Añadir al carrito</button>
+            </div>
+        </div>
+        <div class="item">
+            <figure>
+                <img src="C:\Users\magui\OneDrive\Escritorio\pia profe\nuev\IMG\cibersegu.jpeg" alt="producto" />
+            </figure>
+            <div class="info-product">
+                <h2>Ciberseguridad en la nube</h2>
+                <p class="description">Protegemos tu información contra amenazas potenciales, vulnerabilidades del sistema para tu organización.</p>
+                <p class="price">$20</p>
+                <button class="btn-add-cart">Añadir al carrito</button>
+            </div>
+        </div>
+        <div class="item">
+            <figure>
+                <img src="C:\Users\magui\OneDrive\Escritorio\pia profe\nuev\IMG\gestion.png" alt="producto" />
+            </figure>
+            <div class="info-product">
+                <h2>Gestión de TI</h2>
+                <p class="description">Otorgaremos un amplio catálogo de posibilidades para las operaciones tecnológicas de tu organización.</p>
+                <p class="price">$50</p>
+                <button class="btn-add-cart">Añadir al carrito</button>
+            </div>
+        </div>
+        <div class="item">
+            <figure>
+                <img src="C:\Users\magui\OneDrive\Escritorio\pia profe\nuev\IMG\automati.webp" alt="producto" />
+            </figure>
+            <div class="info-product">
+                <h2>Automatización de oficinas</h2>
+                <p class="description">Ofrecemos innovaciones para tu organización que brindarán un ambiente de trabajo óptimo para la colaboración de tus usuarios y colaboradores.</p>
+                <p class="price">$90</p>
+                <button class="btn-add-cart">Añadir al carrito</button>
+            </div>
+        </div>
+        <div class="item">
+            <figure>
+                <img src="C:\Users\magui\OneDrive\Escritorio\pia profe\nuev\IMG\servi.webp" alt="producto" />
+            </figure>
+            <div class="info-product">
+                <h2>Servidores</h2>
+                <p class="description">Desde equipo de cómputo hasta servidores y dispositivos de almacenamiento, cubre todas tus necesidades de infraestructura con nuestro apoyo.</p>
+                <p class="price">$50</p>
+                <button class="btn-add-cart">Añadir al carrito</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
