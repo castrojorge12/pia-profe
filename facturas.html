@@ -9,10 +9,17 @@
 <body>
     <header>
         <h1>Datos de Facturación</h1>
-        
     </header>
 
     <main>
+        <!-- Desglose del total -->
+        <h2>Desglose de la compra</h2>
+        <div id="cart-details">
+            <p><strong>subtotalotal sin IVA:</strong> <span id="subtotal"></span></p>
+            <p><strong>IVA (16%):</strong> <span id="iva"></span></p>
+            <p><strong>Total con IVA:</strong> <span id="total-with-tax"></span></p>
+        </div>
+
         <form id="billing-form">
             <label for="billing-type">Selecciona el tipo de facturación:</label>
             <select id="billing-type" required>
@@ -59,12 +66,11 @@
             <label for="address">Dirección:</label>
             <input type="text" id="address" placeholder="Ingresa tu dirección">
 
-            <button onclick="viewPago()">Generar Factura</button>
+            <button type="submit">Generar Factura</button>
         </form>
     </main>
 
-            
-
     <script src="validaciones_fac.js"></script>
+
 </body>
 </html>

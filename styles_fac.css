@@ -1,112 +1,99 @@
-/* Reset básico */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Estilo del cuerpo */
+/* Estilos generales para el formulario de facturación */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 20px;
+    background-color: #f4f4f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
 }
 
 header {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-h1 {
-    font-size: 2rem;
-    color: #333;
-}
-
-/* Estilos para el formulario */
-form {
-    background-color: #fff;
-    border-radius: 8px;
+    background-color: #007BFF;
+    color: white;
     padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 100%;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+/* Estilo del formulario */
+form {
     max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
 }
 
 label {
     display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-    color: #333;
-}
-
-input, select, button {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    margin: 10px 0 5px;
     font-size: 1rem;
-    box-sizing: border-box;
 }
 
-input:focus, select:focus, button:focus {
-    outline: none;
-    border-color: #007bff;
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
 }
 
-/* Botón de envío */
 button {
-    background-color: #007bff;
+    background-color: #007BFF;
     color: white;
-    cursor: pointer;
+    padding: 10px 20px;
     border: none;
-    font-size: 1.1rem;
-    transition: background-color 0.3s;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 100%;
 }
 
 button:hover {
     background-color: #0056b3;
 }
 
-/* Mostrar u ocultar campos */
+/* Estilos para la sección de desglose de precios */
+#pricing-breakdown {
+    background-color: #ffffff;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+#pricing-breakdown h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+#pricing-breakdown p {
+    font-size: 1rem;
+    margin: 5px 0;
+}
+
+#pricing-breakdown .total {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #007BFF;
+}
+
+/* Estilos para mostrar y ocultar campos según el tipo de facturación */
 .hidden {
     display: none;
 }
 
-/* Estilos de los campos de error */
+/* Estilos para mensajes de error */
 .error-message {
     color: red;
     font-size: 0.9rem;
-    margin-bottom: 10px;
-}
-
-/* Ajustes de navegación */
-.navegador {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-.navegador ul {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-}
-
-.navegador li {
-    margin: 0;
-}
-
-.navegador a {
-    text-decoration: none;
-    color: #007bff;
-    font-weight: bold;
-}
-
-.navegador a:hover {
-    color: #0056b3;
+    margin-top: 10px;
 }

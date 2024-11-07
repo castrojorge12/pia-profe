@@ -4,7 +4,31 @@ document.addEventListener("DOMContentLoaded", function () {
     const moralFields = document.getElementById("moral-fields");
     const organizacionFields = document.getElementById("organizacion-fields");
     const form = document.getElementById("billing-form");
+    const subtotalElement = document.getElementById('subtotal');
+    const ivaElement = document.getElementById('iva');
+    const totalWithTaxElement = document.getElementById('total-with-tax');
 
+    // Recuperar los productos desde localStorage para mostrar los totales
+    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    let totalWithIVA = 0;
+
+    // Calcular el total con IVA de todos los productos
+    cartItems.forEach(item => {
+        totalWithIVA += item.price;
+    });
+
+    // Calcular el total sin IVA
+    const totalWithoutIVA = totalWithIVA / 1.16;
+
+    // Calcular el IVA
+    const iva = totalWithIVA - totalWithoutIVA;
+
+    // Mostrar los resultados en la página de facturación
+    subtotalElement.innerText = `$${totalWithoutIVA.toFixed(2)}`; // Mostrar subtotal sin IVA
+    ivaElement.innerText = `$${iva.toFixed(2)}`; // Mostrar el IVA calculado
+    totalWithTaxElement.innerText = `$${totalWithIVA.toFixed(2)}`; // Mostrar total con IVA
+
+    // Mostrar los campos del formulario según el tipo de facturación
     billingType.addEventListener("change", function () {
         fisicaFields.classList.add("hidden");
         moralFields.classList.add("hidden");
@@ -19,6 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    // Validación del formulario de facturación
     form.addEventListener("submit", function (e) {
         e.preventDefault();
 
@@ -88,11 +113,7 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
             // Redirigir a la página de pago si todo está correcto
             alert("Formulario de facturación completado correctamente.");
-            window.location.href = "pago.html"; // Cambia "pago.html" por la página de pago
+            window.location.href = "pago2.html"; // Cambia "pago.html" por la página de pago
         }
     });
 });
-    
-
-function viewPago() {
-    window.location.href = 'pago.html';}
