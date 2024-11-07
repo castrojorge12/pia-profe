@@ -1,68 +1,60 @@
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("payment-form");
+    const cardNumber = document.getElementById("card-number");
+    const expiryDate = document.getElementById("expiry-date");
+    const cvv = document.getElementById("cvv");
+    const address = document.getElementById("address");
 
-        // Formatear automáticamente el número de tarjeta a 16 dígitos con espacios
-        const cardNumberInput = document.getElementById('card-number');
-        cardNumberInput.addEventListener('input', function(e) {
-            let cardNumber = e.target.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
-            let formattedCardNumber = cardNumber.match(/.{1,4}/g)?.join(' ') || '';
-            e.target.value = formattedCardNumber;
-        });
+    // Validación del formulario al hacer submit
+    form.addEventListener("submit", function (e) {
+        e.preventDefault(); // Evitar envío del formulario si no es válido
 
-        // Limitar la entrada del número de tarjeta a 16 dígitos
-        cardNumberInput.addEventListener('keydown', function(e) {
-            const key = e.key;
-            const cardNumber = e.target.value.replace(/\s+/g, '');
+        let valid = true;
+        let errorMessage = "";
 
-            if ((key === 'Backspace' || key === 'Delete') && cardNumber.length <= 16) {
-                return;
-            }
-            if (cardNumber.length >= 16 && !['Backspace', 'ArrowLeft', 'ArrowRight', 'Delete'].includes(key)) {
-                e.preventDefault();
-            }
-        });
+        // Validar dirección
+        if (address.value.trim() === "") {
+            valid = false;
+            errorMessage += "La dirección es obligatoria.\n";
+        }
 
-        // Agregar el slash automáticamente en la fecha de expiración después de MM
-        const expiryDateInput = document.getElementById('expiry-date');
-        expiryDateInput.addEventListener('input', function(e) {
-            let expiryDate = e.target.value.replace(/\D/g, '');
-            if (expiryDate.length > 2) {
-                expiryDate = expiryDate.substring(0, 2) + '/' + expiryDate.substring(2, 4);
-            }
-            e.target.value = expiryDate;
-        });
+        // Validar número de tarjeta (debe tener 16 dígitos)
+        const cardValue = cardNumber.value.replace(/\s/g, ""); // Eliminar espacios
+        if (!/^\d{16}$/.test(cardValue)) {
+            valid = false;
+            errorMessage += "El número de tarjeta debe tener 16 dígitos.\n";
+        }
 
-        // Validaciones con expresiones regulares al enviar el formulario
-        document.getElementById('payment-form').addEventListener('submit', function(event) {
-            event.preventDefault();
+        // Validar fecha de expiración (MM/AA)
+        const expiryValue = expiryDate.value.trim();
+        if (!/^\d{2}\/\d{2}$/.test(expiryValue)) {
+            valid = false;
+            errorMessage += "La fecha de expiración debe tener el formato MM/AA.\n";
+        }
 
-            // Obtener los valores de los campos
-            const cardNumber = document.getElementById('card-number').value.replace(/\s+/g, '');
-            const expiryDate = document.getElementById('expiry-date').value;
-            const cvv = document.getElementById('cvv').value;
+        // Validar CVV (debe tener 3 o 4 dígitos)
+        const cvvValue = cvv.value.trim();
+        if (!/^\d{3,4}$/.test(cvvValue)) {
+            valid = false;
+            errorMessage += "El CVV debe tener 3 o 4 dígitos.\n";
+        }
 
-            // Expresiones regulares para validar
-            const cardNumberRegex = /^[0-9]{16}$/;
-            const expiryDateRegex = /^(0[1-9]|1[0-2])\/\d{2}$/; // Formato MM/AA
-            const cvvRegex = /^[0-9]{3,4}$/;
+        // Si los datos son válidos, continuar
+        if (valid) {
+            alert("Formulario de pago completado correctamente.");
+            // Redirigir al index.html
+            window.location.href = "index.html"; // Cambia "index.html" si es necesario
+        } else {
+            alert(errorMessage); // Muestra los errores en un alert
+        }
+    });
 
-            // Validación del número de tarjeta
-            if (!cardNumberRegex.test(cardNumber)) {
-                alert('Por favor, ingrese un número de tarjeta válido (16 dígitos).');
-                return;
-            }
-
-            // Validación de la fecha de expiración
-            if (!expiryDateRegex.test(expiryDate)) {
-                alert('Por favor, ingrese una fecha de expiración válida en formato MM/AA.');
-                return;
-            }
-
-            // Validación del CVV
-            if (!cvvRegex.test(cvv)) {
-                alert('Por favor, ingrese un CVV válido (3 o 4 dígitos).');
-                return;
-            }
-
-            // Si todo es válido, procesar el pago
-            alert('Pago confirmado. ¡Gracias por tu compra!');
-            window.location.href = 'aboutUs.html';
-        });
+    // Formatear la fecha de expiración automáticamente (MM/AA)
+    expiryDate.addEventListener("input", function () {
+        let value = expiryDate.value.replace(/\D/g, ''); // Eliminar caracteres no numéricos
+        if (value.length >= 2) {
+            value = value.substring(0, 2) + '/' + value.substring(2, 4); // Añadir el slash
+        }
+        expiryDate.value = value.substring(0, 5); // Limitar el valor a 5 caracteres (MM/AA)
+    });
+});
