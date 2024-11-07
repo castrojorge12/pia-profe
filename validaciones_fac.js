@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
-
+    
 
 function viewPago() {
     window.location.href = 'pago.html';}
